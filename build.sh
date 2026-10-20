@@ -13,7 +13,7 @@ log "step 1/6: install build deps (Debian 12)"
 apt-get update
 apt-get install -y build-essential flex bison gawk gettext git libncurses-dev \
   libssl-dev rsync unzip zlib1g-dev file wget xz-utils libelf-dev \
-  python3-distutils python3-setuptools swig curl ca-certificates
+  python3-setuptools swig curl ca-certificates
 
 REPO_DIR=${REPO_DIR:-$PWD/openwrt}
 if [ ! -d "$REPO_DIR/.git" ]; then
