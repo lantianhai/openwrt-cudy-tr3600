@@ -41,13 +41,30 @@ cat > .config <<'EOF'
 CONFIG_TARGET_mediatek=y
 CONFIG_TARGET_mediatek_filogic=y
 CONFIG_TARGET_mediatek_filogic_DEVICE_cudy_tr3600-v1=y
+# LuCI + 中文
+CONFIG_PACKAGE_luci=y
+CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
+# WireGuard
 CONFIG_PACKAGE_kmod-wireguard=y
 CONFIG_PACKAGE_wireguard-tools=y
 CONFIG_PACKAGE_luci-proto-wireguard=y
+# GRE
 CONFIG_PACKAGE_kmod-gre=y
 CONFIG_PACKAGE_gre=y
+# Nikki 需要
+CONFIG_PACKAGE_firewall4=y
+CONFIG_PACKAGE_kmod-nft-nat=y
+CONFIG_PACKAGE_kmod-nft-socket=y
+CONFIG_PACKAGE_kmod-nft-tproxy=y
 CONFIG_PACKAGE_kmod-tun=y
+CONFIG_PACKAGE_kmod-inet-diag=y
 CONFIG_PACKAGE_ip-full=y
+# F50 Pro USB 共享驱动
+CONFIG_PACKAGE_kmod-usb-net=y
+CONFIG_PACKAGE_kmod-usb-net-rndis=y
+CONFIG_PACKAGE_kmod-usb-net-cdc-ether=y
+CONFIG_PACKAGE_kmod-usb-net-cdc-ncm=y
+CONFIG_PACKAGE_kmod-usb-net-cdc-mbim=y
 EOF
 make defconfig
 grep -q "CONFIG_TARGET_mediatek_filogic_DEVICE_cudy_tr3600-v1=y" .config \
