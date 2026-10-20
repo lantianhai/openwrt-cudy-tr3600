@@ -1,0 +1,27 @@
+name: Build TR3600
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc
+          df -h
+
+      - name: Build firmware
+        run: |
+          chmod +x build.sh
+          sudo ./build.sh
+
+      - name: Upload sysupgrade image
+        uses: actions/upload-artifact@v4
+        with:
+          name: tr3600-sysupgrade
+          path: openwrt/bin/targets/mediatek/filogic/*sysupgrade.bin
